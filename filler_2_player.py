@@ -72,6 +72,23 @@ class Filler_2_Player(Filler):
             
             return user_input
 
+        def termination_condition() -> bool:
+            if len(self.squares[1]) > 28:
+                print(f'Player 1 wins! P1 reached {len(self.squares[1])} > 28 already! Ending game...')
+                return True
+            elif len(self.squares[2]) > 28:
+                print(f'Player 2 wins! P2 reached {len(self.squares[2])} > 28 already! Ending game...')
+                return True
+            elif len(self.squares[1]) + len(self.squares[2]) == ROWS * COLS:
+                if len(self.squares[1]) > 28:
+                    print('Player 1 wins!')
+                elif len(self.squares[2]) > 28:
+                    print('Player 2 wins!')
+                else:
+                    print('DRAW!')
+                return True
+            return False
+
 
         while True:
             print('Use the following color mappings :: ', COLORS_ORIGINAL)
@@ -92,21 +109,7 @@ class Filler_2_Player(Filler):
                 self.turn = 1
             
             self.print_score()
-            
-            # termination condition
-            if len(self.squares[1]) > 28:
-                print(f'Player 1 wins! P1 reached {len(self.squares[1])} > 28 already! Ending game...')
-                break
-            elif len(self.squares[2]) > 28:
-                print(f'Player 2 wins! P2 reached {len(self.squares[2])} > 28 already! Ending game...')
-                break
-            elif len(self.squares[1]) + len(self.squares[2]) == ROWS * COLS:
-                if len(self.squares[1]) > 28:
-                    print('Player 1 wins!')
-                elif len(self.squares[2]) > 28:
-                    print('Player 2 wins!')
-                else:
-                    print('DRAW!')
+            if termination_condition():
                 break
 
 
