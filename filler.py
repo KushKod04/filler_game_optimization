@@ -16,9 +16,7 @@ class Filler:
         self.grid = deepcopy(self.original_grid)
         self.p1_color = self.grid[-1][0]
         self.p2_color = self.grid[0][-1]
-        self.squares = {}
-        self.squares[1] = {(6,0)}
-        self.squares[2] = {(0,7)}
+        self.squares = {1: {(6,0)}, 2: {(0,7)}}
         self.turn = 1  # integer: 1 for P1, 2 for P2
 
         self.plot_grid()
